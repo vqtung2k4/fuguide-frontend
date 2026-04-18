@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FU Landing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+    .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        height: 500px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">FU Landing Page</a>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+            <div class="container">
+                <h1 class="display-3 fw-bold">Shape Your Future</h1>
+                <p class="lead">At Fu, we believe in success</p>
+                <button class="btn btn-pramry btn-lg">Explore Programs</button>
+            </div>
+    </header>
+
+<section class="container my-5">
+    <h2 class="text-center mb-4">Our Programs</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4" th:each="p : ${programs}">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold" th:text="${p.title}">Ten nganh</h5>
+                    <p class="card-text text-muted" th:text="${p.description}">Mo ta nganh hoc</p>
+                    <a href="#" class="btn btn-outline-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
