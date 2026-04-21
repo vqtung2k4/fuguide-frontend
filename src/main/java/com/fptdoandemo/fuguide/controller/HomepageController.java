@@ -1,5 +1,6 @@
 package com.fptdoandemo.fuguide.controller;
 
+import com.fptdoandemo.fuguide.repository.CampusLifeRepository;
 import com.fptdoandemo.fuguide.repository.NewsRepository;
 import com.fptdoandemo.fuguide.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,14 @@ public class HomepageController {
     @Autowired
     private NewsRepository newsRepo;
 
+    @Autowired
+    private CampusLifeRepository campusRepo;
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("programs", programRepo.findAll());
         model.addAttribute("news", newsRepo.findAll());
+        model.addAttribute("campusFeatures", campusRepo.findAll());
 
         model.addAttribute("englishLocale", Locale.ENGLISH);
 

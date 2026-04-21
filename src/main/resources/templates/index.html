@@ -48,6 +48,42 @@
     </div>
 </section>
 
+    <section class="container my-5 py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="display-5 fw-bold mb-4">Experience Campus Life</h2>
+                <p class="text-muted mb-5">
+                    Our campus offers a vibrant community where students can grow,
+                    collaborate, and create lasting memories through various activities and organizations.
+                </p>
+
+                <div class="campus-features">
+                   <div class="d-flex align-items-start mb-4" th:each="feature : ${campusFeatures}">
+                       <div class="icon-box me-3 bg-primary-subtle p-3 rounded-3 text-primary">
+                           <i class="bi fs-4" th:classappend="${feature.icon}"></i>
+                       </div>
+                       <div>
+                           <h5 class="fw-bold mb-1" th:text="${feature.title}">Tieu de</h5>
+                           <p class="text-muted mb-0 small" th:text="${feature.description}">Mo ta</p>
+                       </div>
+                   </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0 ">
+                <div class="position-relative">
+                    <img src="/images/playground.png"
+                         class="img-fluid rounded-4 shadow-lg w-100"
+                         alt="Campus Life">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
     <section class="container my-5">
         <h2 class="text-center mb-4">Latest News</h2>
         <div class="row">
