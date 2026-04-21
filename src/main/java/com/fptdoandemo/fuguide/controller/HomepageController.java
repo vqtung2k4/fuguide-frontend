@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Locale;
+
 @Controller
 public class HomepageController {
     @Autowired
@@ -20,6 +22,8 @@ public class HomepageController {
     public String index(Model model) {
         model.addAttribute("programs", programRepo.findAll());
         model.addAttribute("news", newsRepo.findAll());
+
+        model.addAttribute("englishLocale", Locale.ENGLISH);
 
         return "index";
     }
