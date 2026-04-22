@@ -1,6 +1,6 @@
 package com.fptdoandemo.fuguide.repository;
 
-import com.fptdoandemo.fuguide.model.Program;
+import com.fptdoandemo.fuguide.model.CampusLife;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
@@ -14,51 +14,51 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Repository
-public class ProgramRepository {
-    private static final String COLLECTION_NAME = "programs";
+public class CampusLifeRepository {
+    private static final String COLLECTION_NAME = "campusLife";
     private final Firestore firestore;
 
-    public ProgramRepository(Firestore firestore) {
+    public CampusLifeRepository(Firestore firestore) {
         this.firestore = firestore;
     }
 
-    public List<Program> findAll() {
-        List<Program> programs = new ArrayList<>();
+    public List<CampusLife> findAll() {
+        List<CampusLife> features = new ArrayList<>();
         CollectionReference collection = firestore.collection(COLLECTION_NAME);
         ApiFuture<QuerySnapshot> future = collection.get();
         try {
             for (DocumentSnapshot doc : future.get().getDocuments()) {
-                Program program = doc.toObject(Program.class);
-                if (program != null) {
-                    program.setId(doc.getId());
-                    programs.add(program);
+                CampusLife campusLife = doc.toObject(CampusLife.class);
+                if (campusLife != null) {
+                    campusLife.setId(doc.getId());
+                    features.add(campusLife);
                 }
             }
-            return programs;
+            return features;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Interrupted while reading programs from Firebase", e);
+            throw new RuntimeException("Interrupted while reading campus life from Firebase", e);
         } catch (ExecutionException e) {
-            throw new RuntimeException("Failed to read programs from Firebase", e);
+            throw new RuntimeException("Failed to read campus life from Firebase", e);
         }
     }
 
-    public Program save(Program program) {
+    public CampusLife save(CampusLife campusLife) {
         try {
             DocumentReference docRef;
-            if (program.getId() == null || program.getId().isBlank()) {
+            if (campusLife.getId() == null || campusLife.getId().isBlank()) {
                 docRef = firestore.collection(COLLECTION_NAME).document();
-                program.setId(docRef.getId());
+                campusLife.setId(docRef.getId());
             } else {
-                docRef = firestore.collection(COLLECTION_NAME).document(program.getId());
+                docRef = firestore.collection(COLLECTION_NAME).document(campusLife.getId());
             }
-            docRef.set(program).get();
-            return program;
+            docRef.set(campusLife).get();
+            return campusLife;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Interrupted while saving program to Firebase", e);
+            throw new RuntimeException("Interrupted while saving campus life to Firebase", e);
         } catch (ExecutionException e) {
-            throw new RuntimeException("Failed to save program to Firebase", e);
+            throw new RuntimeException("Failed to save campus life to Firebase", e);
         }
     }
 }

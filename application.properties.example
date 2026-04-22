@@ -1,0 +1,7 @@
+spring.web.locale=en_US
+
+# Firebase service account credentials file path (Windows example)
+firebase.credentials.path=C:/Users/your-user/Downloads/firebase-service-account.json
+
+# Your Firebase project id
+firebase.project-id=your-firebase-project-id

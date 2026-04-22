@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Program {
+public class CampusLife {
     private String id;
+
     private String title;
     private String description;
-    private String iconName;
+    private String icon;
 }
