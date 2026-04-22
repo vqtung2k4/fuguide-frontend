@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Locale;
 
 @Controller
 public class HomepageController {
@@ -25,10 +22,8 @@ public class HomepageController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("programs", programRepo.findAll());
-        model.addAttribute("news", newsRepo.findAll());
+        model.addAttribute("news", newsRepo.findAllByOrderByPublishedDateDesc());
         model.addAttribute("campusFeatures", campusRepo.findAll());
-
-        model.addAttribute("englishLocale", Locale.ENGLISH);
 
         return "index";
     }
