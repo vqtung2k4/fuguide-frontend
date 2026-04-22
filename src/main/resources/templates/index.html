@@ -90,7 +90,7 @@
             <div class="col-md-4 mb-4" th:each="e : ${news}">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body text-left">
-                        <p class="card-text text-muted" th:text="${#temporals.format(e.publishedDate, 'MMM dd, yyyy', englishLocale)}">Ngay</p>
+                        <p class="card-text text-muted" th:text="${e.publishedDate}">Ngay</p>
                         <span class="badge rounded-pill bg-primary-subtle text-primary mb-2" th:text="${e.category}">Category</span>
                         <h5 class="card-title fw-bold" th:text="${e.title}">Ten nganh</h5>
                         <p class="card-text text-muted" th:text="${e.summary}">Mo ta nganh hoc</p>
